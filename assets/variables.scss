@@ -1,0 +1,8 @@
+:root {    
+    --primary-color: #000000;
+    
+    --bg-primary-color: #fff;
+    --bg-secondary-color: #fff;
+    --bg-accent-color: #a66eff;
+    --bg-transparent-color: oklch(from var(--bg-primary-color) l c h / calc(alpha - 0.25));
+}

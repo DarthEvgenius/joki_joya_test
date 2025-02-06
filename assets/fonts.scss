@@ -1,0 +1,65 @@
+@font-face {
+    font-family: 'druk_cyr';
+    src: url('/fonts/drukcyr-medium-webfont.woff2') format('woff2'),
+        url('/fonts/drukcyr-medium-webfont.woff') format('woff'),
+        url('/fonts/DrukCyr-Medium.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'druk_wide';
+    src: url('/fonts/drukwidecyr-medium.woff2') format('woff2'),
+        url('/fonts/drukwidecyr-medium.woff') format('woff'),
+        url('/fonts/drukwidecyr-medium.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'montserrat';
+    src: url('/fonts/montserrat-bold.woff2') format('woff2'),
+        url('/fonts/montserrat-bold.woff') format('woff'),
+        url('/fonts/Montserrat-Bold.ttf') format('ttf');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NunitoSans_Black';
+    src: url('/fonts/NunitoSans-Black.woff2') format('woff2'),
+        url('/fonts/NunitoSans-Black.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NunitoSans_Bold';
+    src: url('/fonts/NunitoSans-Bold.woff2') format('woff2'),
+        url('/fonts/NunitoSans-Bold.ttf') format('ttf');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NunitoSans_Light';
+    src: url('/fonts/NunitoSans-Light.woff2') format('woff2'),
+        url('/fonts/NunitoSans-Light.ttf') format('ttf');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NunitoSans_Regular';
+    src: url('/fonts/NunitoSans_Regular.woff2') format('woff2'),
+        url('/fonts/NunitoSans-Regular.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
