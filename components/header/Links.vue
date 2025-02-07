@@ -2,18 +2,29 @@
     <div>
         <span>Test Font</span>
         <span>Test Font</span>
-        <span>Test Font</span>
-        <span>Test Font</span>
-        <span>Test Font</span>
+        <Button 
+            pInline="32px" 
+            color="white"
+            :bd="false"
+            bg="pink"
+        >
+            Купить билеты
+        </Button>
+        <SvgoLocation class="contacts" />
+        <SvgoPhone class="contacts" />
     </div>
 </template>
 
 <style scoped>
-div {
-    display: flex;
-    gap: 1rem;
-    font-size: 2rem;
-}
+    .contacts {
+        color: #5834A4;
+    }
+
+    div {
+        display: flex;
+        gap: 1rem;
+        font-size: 2rem;
+    }
     span:nth-of-type(1) {
         color: red;
         font-family: 'druk_cyr';

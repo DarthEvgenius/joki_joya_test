@@ -1,8 +1,15 @@
 :root {    
-    --primary-color: #000000;
+    --clr-black: #000000;
+    --clr-white: #fff;
+    --clr-purple-dark: #5834a4;
+    --clr-purple-light: #a66eff;
+    --clr-pink: #f269af;
+    --clr-green: #abec20;
+    --clr-blue: #0267ff;
+    --clr-orange: #f55e1d;
     
     --bg-primary-color: #fff;
     --bg-secondary-color: #fff;
-    --bg-accent-color: #a66eff;
+    --bg-accent-color: var(--clr-purple-light);
     --bg-transparent-color: oklch(from var(--bg-primary-color) l c h / calc(alpha - 0.25));
 }
