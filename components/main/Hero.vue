@@ -5,7 +5,8 @@
             format="webp" 
             preload 
             width="1216" 
-            height="616" 
+            height="616"
+            fit="cover" 
             alt="Каждый день праздник"
             class="hero__image" />
 
@@ -17,9 +18,9 @@
                         <span class="hero__name--shadow">joki joya</span></p>
                 </h1>
                 <div class="hero__icons">
-                    <SvgoStar />
-                    <SvgoStar />
-                    <SvgoStar />
+                    <SvgoStar class="hero__icon" />
+                    <SvgoStar class="hero__icon" />
+                    <SvgoStar class="hero__icon" />
                 </div>
             </div>
             
@@ -33,6 +34,7 @@
 <style scoped>
 .hero {
     display: grid;
+    justify-content: center;
     gap: 40px;
 }
 
@@ -43,19 +45,20 @@
 }
 
 .hero__image {
+    height: 100%;
     border-radius: 32px;
 }
 
 .hero__title {
     display: grid;
     grid-auto-flow: column;
-    gap: 1vw;
+    gap: 2vw;
 }
 
 .hero__text {
     display: flex;
     font-family: 'druk_wide';
-    font-size: var(--f-size-xxl);
+    font-size: clamp(2rem, 1rem + 3vw, var(--f-size-73));
     text-transform: uppercase;
 }
 
@@ -84,9 +87,39 @@
 .hero__icons {
     align-self: center;
     display: flex;
-    gap: 8px;
+    gap: 1.18rem;
     color: var(--clr-blue);
-    font-size: 55px;
+    font-size: clamp(24px, 1rem + 3vw, 55px);
+}
+
+@media (max-width: 958px) {
+    .hero__image {
+        max-width: 80vw;
+    }
+    
+    .hero__icon:nth-of-type(3) {
+        display: none;
+    }
+}
+
+@media (max-width: 840px) {
+    .hero__icon:nth-of-type(2) {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero__image {
+        max-width: 90vw;
+        min-height: 616px;
+    }
+}
+
+@media (max-width: 720px) {
+    .hero__wrapper {
+        display: grid;
+        gap: 3.375rem;
+    }
 }
 
 </style>

@@ -17,16 +17,17 @@
         align-items: center;
         gap: 10px;
         cursor: pointer;
-        font-size: var(--f-size-xl);
+        font-size: var(--f-size-24);
         color: var(--clr-white);
 
-        transform: rotate(-90deg) translateX(-50%) translateY(-100%);
+        transform: rotate(-90deg);
     }
  
     .value {
         font-family: 'druk_cyr';
         letter-spacing: 1.7px;
         text-transform: uppercase;
+        white-space: nowrap;
     }
     .sidebar-button svg {
         /* width: 24px;

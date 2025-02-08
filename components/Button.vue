@@ -57,7 +57,7 @@
   display: flex;        
   align-items: center;
   gap: 0.625rem;
-  font-size: 1.375rem;
+  font-size: var(--f-size-22);
   line-height: 24px;
   text-align: center;
   text-transform: uppercase;

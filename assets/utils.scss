@@ -1,17 +1,29 @@
 .font-size-s {
-    font-size: var(--f-size-s);
+    font-size: var(--f-size-13);
 }
 
 .font-size-m {
-    font-size: var(--f-size-m);
+    font-size: var(--f-size-16);
 }
 
 .font-size-l {
-    font-size: var(--f-size-l);
+    font-size: var(--f-size-22);
 }
 
 .font-size-xl {
-    font-size: var(--f-size-xl);
+    font-size: var(--f-size-24);
+}
+
+.font-size-xxl {
+    font-size: var(--f-size-54);
+}
+
+.font-druk {
+    font-family: 'druk_cyr';
+}
+
+.font-druk-wide {
+    font-family: 'druk_wide';
 }
 
 .no-wrap {
