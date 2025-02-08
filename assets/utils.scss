@@ -1,0 +1,38 @@
+.font-size-s {
+    font-size: var(--f-size-s);
+}
+
+.font-size-m {
+    font-size: var(--f-size-m);
+}
+
+.font-size-l {
+    font-size: var(--f-size-l);
+}
+
+.font-size-xl {
+    font-size: var(--f-size-xl);
+}
+
+.no-wrap {
+    white-space: nowrap;
+    text-wrap-mode: nowrap;
+}
+
+@media (max-width: 958px) {
+    .xl-only {
+        display: none !important;
+    }
+}
+
+@media (max-width: 840px) {
+    .l-only {
+        display: none !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .lm-only {
+        display: none !important;
+    }
+}

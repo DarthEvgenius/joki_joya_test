@@ -1,0 +1,19 @@
+.wrapper {
+    max-width: 84vw;
+    width: 100%;
+}
+
+.btn {
+    &:not(.icon-hover):hover {
+        scale: 1.05;
+    }
+  
+    &.icon-hover svg {
+        transition: transform 300ms;
+    }
+    
+    &.icon-hover:hover svg {
+        transform: scale(1.25);
+    }
+  }
+  

@@ -1,6 +1,9 @@
 <template>
     <div class="index">
         <Header />
+        <Sidebar />
+        <SidebarRight />
+        <Main />
     </div>
 </template>
 

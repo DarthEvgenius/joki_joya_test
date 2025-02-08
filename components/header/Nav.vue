@@ -1,69 +1,76 @@
 <script setup>
-    const ringText = useTemplateRef('text-ring');
-    
-    onMounted(() => {
-        const ring = ringText.value;
-        console.log('text ring', ring);
+    const isMenuActive = ref(false);
 
-        // const innerText = Array.from(ring.querySelectorAll('span')).map(el => el.textContent).join('  ');
-
-
-        // console.log(innerText);
-
-        // ring.style.setProperty('--total', innerText.length)
-        // ring.style.setProperty('--spacing', 1)
-        // ring.style.setProperty('--size', 1)
-
-        
-    })
-
-    const rawHtml = ref(`
-        <svg
-  viewBox="0 0 100 100"
-  xmlns="http://www.w3.org/2000/svg"
->
-  <path
-    id="circlePath"
-    d="
-      M 10, 50
-      a 40,40 0 1,1 80,0
-      40,40 0 1,1 -80,0
-    "
-  />
-  <text>
-    <textPath href="#circlePath">
-      Your text here!
-    </textPath>
-  </text>
-</svg>
-        `)
-
-    const raw2 = ref(`        <span>Каждый день праздник</span>
-        <span>Каждый день праздник</span>`)
+    const toggleMenu = () => {
+        isMenuActive.value = !isMenuActive.value;
+    };
 </script>
 
 <template>
-    <div class="text-ring" ref="text-ring" >
-        <NuxtImg src="/welcome.png" format="webp" preload width="144" height="144" alt="Каждый день праздник" />
-    </div>
+    <nav 
+        class="nav" 
+        :class="{ active: isMenuActive }"
+        @click="toggleMenu" 
+    >
+        <div class="nav__lines">
+            <span class="nav__line"></span>
+            <span class="nav__line"></span>
+            <span class="nav__line"></span>
+        </div>
+        <p class="nav__text">меню</p>
+    </nav>
 </template>
 
 <style scoped>
-   .text-ring {
-    --character-width: 1; /* In "ch" units */
-    --inner-angle: calc((360 / var(--total)) * 1deg);
-    --radius: calc(
-        (
-        var(--character-width, 1) /
-        sin(var(--inner-angle))
-        ) * -1ch
-    );
+.nav {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: end;
+    gap: 4px;
+    color: var(--clr-blue);
+    cursor: pointer;
+}
 
+.nav__text {
+    text-transform: uppercase;
+    font-family: 'montserrat';
+    font-size: 11px;
+}
+
+.nav__lines {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    gap: 6px;
+}
+
+.nav__line {
+    width: 32px;
+    height: 4px;
+    background-color: var(--clr-blue);
+    transition: transform 0.3s;
+}
+
+.nav__line:nth-child(2) {
+    width: 22px;
+}
+
+.active {
+    .nav__line:nth-child(1),
+    .nav__line:nth-child(3) {
+        transform: 
+            translateX(-5px)
+            scaleX(0.5);
     }
-    .text-ring [style*=--index] {
-    transform:
-        translate(-50%, -50%)
-        rotate(calc(var(--inner-angle) * var(--index)))
-        translateY(var(--radius, -5ch));
+    .nav__line:nth-child(2) {
+        transform: 
+            translateX(5px)
+            scaleX(0.7);
     }
+} 
+
 </style>
