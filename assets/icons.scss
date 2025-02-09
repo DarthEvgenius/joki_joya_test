@@ -1,0 +1,36 @@
+.gradient-icon {
+    background-image: linear-gradient(90deg, #F0B153 0%, #EFD0C4 100%);
+}
+
+.custom-icon {
+    mask-size: 100%;
+    color: transparent;
+}
+
+.icon-cross {
+    mask-image: url('/assets/icons/cross-2.svg');
+}
+
+.icon-flower {
+    mask-image: url('/assets/icons/flower-2.svg');
+}
+
+.icon-star {
+    mask-image: url('/assets/icons/star-2.svg');
+}
+
+.icon-arrow {
+    mask-image: url('/assets/icons/arrow-long.svg');
+}
+
+.icon-vk {
+    mask-image: url('/assets/icons/vk.svg');
+}
+
+.icon-tg {
+    mask-image: url('/assets/icons/tg.svg');
+}
+
+.icon-jj {
+    mask-image: url('/assets/icons/jj.svg');
+}

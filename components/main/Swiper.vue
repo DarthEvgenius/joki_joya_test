@@ -1,248 +1,167 @@
 <script setup>
+const slides = [
+    { id: 1, src: '/swipe.png', alt: 'Описание' },
+    { id: 2, src: '/swipe.png', alt: 'Описание' },
+    { id: 3, src: '/swipe.png', alt: 'Описание' },
+    { id: 4, src: '/swipe.png', alt: 'Описание' },
+    { id: 5, src: '/swipe.png', alt: 'Описание' },
+];
 
-const slides = ref(
-  Array.from({ length: 10 }, (_, idx) => {
-    const r = Math.floor(Math.random() * 256)
-    const g = Math.floor(Math.random() * 256)
-    const b = Math.floor(Math.random() * 256)
+const imageLoading = ref(Array(slides.length).fill(true));
 
-    const contrast = r * 0.299 + g * 0.587 + b * 0.114 > 186 ? 'black' : 'white'
-
-    return {
-      id: idx + 1,
-      bg: `rgb(${r}, ${g}, ${b})`,
-      color: contrast,
-    }
-  }),
-)
+const onImageLoaded = (index) => {
+    imageLoading.value[index] = false;
+}
 
 const swiperBasicRef = ref(null)
-const swiper1 = useSwiper(swiperBasicRef)
-const swiperCreativeRef = ref(null)
-
-const swiper2 = useSwiper(swiperCreativeRef, {
-  effect: 'creative',
-  autoplay: {
-    delay: 8000,
-    disableOnInteraction: true,
-  },
-  creativeEffect: {
-    prev: {
-      translate: ['-125%', 0, -800],
-      rotate: [0, 0, -90],
+const swiper = useSwiper(swiperBasicRef, {
+    spaceBetween: 30,
+    autoplay: {
+        delay: 3000,
+        disableOnInteraction: true,
     },
-    next: {
-      translate: ['125%', 0, -800],
-      rotate: [0, 0, 90],
-    },
-  },
-})
-
-onMounted(() => {
-    console.log(swiper1);
-})
+});
 
 </script>
 
 <template>
-<div class="swiper wrapper">
+<div class="swiper">
 
     <div class="swiper-wrapper">
-      <h2>Basic w/ Slots & Custom Navigation</h2>
-
       <div
         class="swiper-wrapper__inner"
       >
         <ClientOnly>
-          <swiper-container
-            ref="swiperBasicRef"
-            class="swiper-basic"
-            :loop="true"
-            pagination="true"
-          >
-            <div slot="container-start">
-              Slot component before wrapper
-            </div>
-            <div slot="container-end">
-              Slot component after wrapper
-            </div>
-            <swiper-slide
-              v-for="slide in slides"
-              :key="`slide-basic-${slide.id}`"
-              class="swiper-slide"
-              lazy="true"
-              :style="`background-color: ${slide.bg}; color: ${slide.color};`"
+            <swiper-container
+                ref="swiperBasicRef"
+                :loop="true"
+                pagination="true"
             >
-              {{ slide.id }}
-            </swiper-slide>
-          </swiper-container>
+                
+                <swiper-slide
+                    v-for="(slide, index) in slides"
+                    :key="`${slide.id}`"
+                    class="swiper-slide"
+                    lazy="true"
+                >
+                    <div 
+                        class="skeleton-wrapper"
+                        v-if="imageLoading[index]"
+                    >
+                        <MainSkeletonLoader />
+                    </div>
+                    
 
-          <div class="swiper-basic-buttons">
-            <button @click="swiper1.prev()">
-              Prev
-            </button>
-            <button @click="swiper1.next()">
-              Next
-            </button>
-          </div>
+                    <NuxtImg 
+                        :src="slide.src" 
+                        :alt="slide.alt"
+                        format="webp"
+                        fit="cover"
+                        loading="lazy"
+                        @load="onImageLoaded(index)"
+                    />
+                </swiper-slide>
+            </swiper-container>
+
+            <div class="swiper-buttons">
+                <button 
+                    @click="swiper.prev()"
+                    class="swiper__button swiper__button_prev"
+                >
+                    <SvgoArrow-back class="icon-no-fill" />
+                </button>
+
+                <button 
+                    @click="swiper.next()"
+                    class="swiper__button swiper__button_next"
+                >
+                    <SvgoArrow-forward class="icon-no-fill" />
+                </button>
+            </div>
         </ClientOnly>
       </div>
     </div>
-
-    <div class="swiper-wrapper">
-        <h2>Creative Effect</h2>
-        <div class="swiper-wrapper__inner">
-            <ClientOnly>
-            <swiper-container ref="swiperCreativeRef" class="swiper-creative" :loop="true" :init="false">
-                <swiper-slide
-                v-for="slide in slides"
-                :key="`slide-creative-${slide.id}`"
-                class="swiper-slide"
-                :style="`background-color: ${slide.bg}; color: ${slide.color};`"
-                >
-                {{ slide.id }}
-                </swiper-slide>
-            </swiper-container>
-            </ClientOnly>
-        </div>
-    </div> 
-
-    <!-- <div class="swiper-wrapper">
-      <h2>Card Effect</h2>
-
-      <div class="swiper-wrapper__inner">
-        <ClientOnly>
-          <swiper-container
-            class="swiper-cards"
-            :width="240"
-            :slides-per-view="1"
-            :loop="true"
-            effect="cards"
-            :autoplay="{
-              delay: 8000,
-              disableOnInteraction: true,
-            }"
-          >
-            <swiper-slide
-              v-for="slide in slides"
-              :key="`slide-card-${slide.id}`"
-              :style="`background-color: ${slide.bg}; color: ${slide.color};`"
-            >
-              {{ slide.id }}
-            </swiper-slide>
-          </swiper-container>
-        </ClientOnly>
-      </div>
-    </div> -->
-    
 </div>
 </template>
 
 <style scoped>
-.swiper {
-    margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  padding: 1rem 1rem;
+.skeleton-wrapper {
+    width: 100%;
+    height: 100%;
+    background-color: #f0f0f0;
 }
 
-.swiper > .swiper-wrapper:not(:last-child) {
-  border-bottom: 1px solid #d9d9d9;
-  padding-bottom: 2rem !important;
-  margin-bottom: 2rem !important;
+swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 18px;
-  height: 20vh;
-  font-size: 4rem;
-  font-weight: bold;
-  font-family: 'Roboto', sans-serif;
+swiper-container::part(pagination) {
+    bottom: 3rem;
+    padding-left: 10rem;
+    display: block;
+    text-align: left;
 }
-
-/* 
-There are following CSS parts are available for styling:
-
-container - styles for <div class="swiper">
-
-wrapper - styles for <div class="swiper-wrapper">
-
-button-prev - styles for prev Navigation button <div class="swiper-button-prev">
-
-button-next - styles for next Navigation button <div class="swiper-button-next">
-
-pagination - styles for prev Pagination container <div class="swiper-pagination">
-
-bullet - styles for Pagination bullet element
-
-bullet-active - styles for active Pagination bullet element
-
-scrollbar - - styles for Scrollbar container <div class="swiper-scrollbar">
-*/
 
 swiper-container::part(bullet) {
-  background-color: var(--clr-green);
-  opacity: 1;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--clr-green);
+    opacity: 1;
 }
 
 swiper-container::part(bullet-active) {
-  background-color: red;
-  width: 20px;
-  border-radius: 5px;
-}
-
-.swiper-wrapper {
-  display: flex;
-  flex-direction: column;
-}
-
-.swiper-wrapper h2 {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-top: 0;
-  margin-bottom: 1rem;
+    background-color: var(--clr-green);
+    width: 4rem;
+    height: 1rem;
+    border-radius: 1rem;
 }
 
 .swiper-wrapper__inner {
-  border: 1px solid #eaeaea;
-  background-color: #f5f5f5;
-  padding: 1rem;
-  border-radius: 8px;
+    position: relative;
 }
 
-.swiper-basic-buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1rem;
+.swiper-buttons {
+    position: absolute;
+    left: 0;
+    bottom: 3rem;
+    transform: translateX(-50%);
+    z-index: var(--z-index-button);
 }
 
-.swiper-basic-buttons button {
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  border: 1px solid black;
-  background-color: white;
+.swiper__button {
+  width: 80px;
+  height: 80px;
+  font-size: var(--f-size-54);
   cursor: pointer;
+  transition: scale 300ms;
 }
 
-.swiper-basic-buttons button:hover {
-  background-color: black;
-  color: white;
+.swiper__button_prev {
+    background-color: var(--clr-blue);
 }
 
-.swiper-basic .swiper-wrapper {
-  min-width: 100vh;
-  width: 100vh;
+.swiper__button_next {
+    background-color: var(--clr-green);
 }
 
-.swiper-cards {
-  width: 240px;
-  height: 240px;
+.swiper-buttons .swiper__button:hover {
+    scale: 1.05;
 }
-.swiper-cards swiper-slide {
-  border-radius: 6px;
-  border: 1px solid black;
+
+@media (max-width: 768px) {
+    .swiper-buttons {
+        top: 1rem;
+        left: 1rem;
+        transform: translateX(0);
+    }
+
+    swiper-container::part(pagination) {
+        bottom: 2rem;
+        display: flex;
+        justify-content: space-evenly;
+        padding-inline: 0;
+    }
 }
 </style>

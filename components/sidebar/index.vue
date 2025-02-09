@@ -13,13 +13,7 @@
         width: 64px;
         height: 100%;
         padding-top: 80px;
-        /* display: grid;
-        justify-items: center;
-        align-items: start; */
-        /* grid-auto-rows: 75px; */
-        /* gap: 80px; */
         display: flex;
-        /* justify-content: space-between; */
         align-items: center;
         flex-direction: column;
         background-color: var(--bg-accent-color);        
@@ -27,7 +21,6 @@
 
     .sidebar__item {
         flex: 1;
-        /* transform: translateX(10px); */
     }
 
     @media (max-width: 768px) {

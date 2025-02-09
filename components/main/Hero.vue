@@ -1,5 +1,5 @@
 <template>
-    <section class="hero">
+    <section class="hero" id="hero">
         <NuxtImg 
             src="/hero.png" 
             format="webp" 
@@ -8,7 +8,8 @@
             height="616"
             fit="cover" 
             alt="Каждый день праздник"
-            class="hero__image" />
+            class="hero__image"
+        />
 
         <div class="wrapper hero__wrapper">
             <div class="hero__title">
@@ -66,12 +67,12 @@
     color: var(--clr-blue);
     text-wrap: nowrap;
     position: relative;
-    z-index: 1;
+    z-index: var(--z-index-content);
 }
 
 .hero__name--main {
     position: relative;
-    z-index: 1;
+    z-index: var(--z-index-content);
 }
 
 .hero__name--shadow {
@@ -81,7 +82,7 @@
     color: var(--clr-green);
     -webkit-text-stroke: 3px var(--clr-green);
     -webkit-text-fill-color: transparent;
-    z-index: 0;
+    z-index: var(--z-index-background);
 }
 
 .hero__icons {

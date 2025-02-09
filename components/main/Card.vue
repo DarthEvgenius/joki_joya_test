@@ -8,6 +8,7 @@
 
     const dynamicStyle = computed(() => ({
         'backgroundColor': `var(--clr-${card.bgColor})`,
+        'color': card.color,
     }));
     
 </script>
@@ -17,9 +18,16 @@
         <div v-html="card.text" class="card__text"></div>
 
         <Button 
-            :color="card.color">
+            :color="card.color"
+            class="card__btn"
+        >
             {{ card.btnText }}
-            <SvgoArrowLong />
+
+            <i 
+                class="card__btn_icon icon-arrow custom-icon" 
+                :style="{backgroundColor: card.color}">
+            </i>
+            <!-- <SvgoArrowLong :style="{color: card.color}" class="icon-no-fill" /> -->
         </Button>
 
         <NuxtImg :src="card.imgUrl" class="card__image" loading="lazy" />
@@ -49,18 +57,33 @@
         position: absolute;
         inset: 0;
         background-image: url('texture.png');
-        opacity: 0.25;
+        opacity: 0.3;
+        mix-blend-mode: plus-lighter;
     }
 
     .card__text {
+        position: relative;
         line-height: 1;
+        text-transform: uppercase;
+        z-index: var(--z-index-content);
+    }
+
+    .card__btn {
+        position: relative;
+        z-index: var(--z-index-button);
+    }
+
+    .card__btn_icon {
+        display: block;
+        width: 2rem;
+        height: 1rem;
     }
 
     .card__image {
         position: absolute;
         bottom: 0;
         right: 0;
-        z-index: 1;
+        z-index: var(--z-index-image);
     }
 
     .crosses {
@@ -70,7 +93,7 @@
 
     .crosses .cross {
         position: absolute;
-        z-index: 1;
+        z-index: var(--z-index-image);
     }
 
     .crosses .cross:nth-child(1) {

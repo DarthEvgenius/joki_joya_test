@@ -4,6 +4,7 @@
         <Sidebar />
         <SidebarRight />
         <Main />
+        <Footer />
     </div>
 </template>
 

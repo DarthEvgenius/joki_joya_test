@@ -17,9 +17,8 @@
         align-items: center;
         gap: 2px;
         cursor: pointer;
-        font-size: var(--f-size-24);
+        font-size: clamp(1rem, 1rem + 1vh, var(--f-size-24));
         color: var(--clr-white);
-
         transform: rotate(-90deg);
     }
  
@@ -30,12 +29,7 @@
         white-space: nowrap;
     }
     .sidebar-button svg {
-        /* width: 24px;
-        height: 24px; */
         rotate: 90deg;
     }
 
-    .icon-no-fill * {
-        fill: none;
-    }
 </style>

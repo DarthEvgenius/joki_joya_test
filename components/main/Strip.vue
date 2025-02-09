@@ -5,13 +5,13 @@
 <style scoped>
     .strip {
         background-image: url('/strip.png');
-        background-size: contain;
-        background-repeat: no-repeat;
+        background-size: cover;
+        background-repeat: repeat-y;
     }
 
-    /* @media (max-width: 600px) {
+    @media (max-width: 1024px) {
         .strip {
-            display: none;
+            background-size: contain;
         }
-    } */
+    }
 </style>

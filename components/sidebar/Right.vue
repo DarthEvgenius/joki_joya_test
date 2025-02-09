@@ -6,9 +6,9 @@
 
 <style scoped>
 .sidebar-right {
-    position: fixed;
+    position: absolute;
     right: 1.5rem;
-    top: 70%;
+    top: 120%;
     width: 2rem;
 }
 

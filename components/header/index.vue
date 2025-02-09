@@ -21,7 +21,7 @@
 
     overflow: hidden;
     background-color: var(--bg-transparent-color);
-    z-index: 100;
+    z-index: var(--z-index-header);
 
     &::before {
         content: '';
@@ -34,7 +34,7 @@
         );
         backdrop-filter: blur(5px);
         mask-size: cover;
-        z-index: -1;
+        z-index: var(--z-index-backdrop);
     }
 }
 
