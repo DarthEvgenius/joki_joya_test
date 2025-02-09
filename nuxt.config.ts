@@ -14,6 +14,7 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/image',
     'nuxt-svgo',
+    'nuxt-swiper'
   ],
 
   app: {

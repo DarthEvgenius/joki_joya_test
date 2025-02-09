@@ -4,6 +4,8 @@
         <MainAbout />
         <MainFacts />
     </section>
+
+    <MainGallery />
 </template>
 
 <style scoped>

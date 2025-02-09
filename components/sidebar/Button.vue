@@ -15,7 +15,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 10px;
+        gap: 2px;
         cursor: pointer;
         font-size: var(--f-size-24);
         color: var(--clr-white);

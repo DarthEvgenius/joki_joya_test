@@ -8,7 +8,7 @@ console.log('cards', toRaw(cards.value));
 
 <template>
     <section class="facts">
-        <!-- <MainCard :card="card" /> -->
+        <MainCard :card="cards[0]" />
         <!-- <Card v-for="card in cards" :key="card.id" :card="card" /> -->
     </section>
 </template>
